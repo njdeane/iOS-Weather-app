@@ -33,9 +33,20 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
         print(searchTextField.text!)
         return true
     }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if searchTextField.text != "" {
+            return true
+        }   else {
+            textField.placeholder = "Type something fool!"
+            return false
+        }
+    }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // Use searchTextField.text to get the weather for that city.
         searchTextField.text = ""
+        searchTextField.placeholder = "Search"
     }
 }
 
