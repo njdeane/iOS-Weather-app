@@ -9,6 +9,8 @@
 import UIKit
 
 class WeatherViewController: UIViewController, UITextFieldDelegate {
+    
+    var weatherManager = WeatherManager()
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -44,9 +46,17 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if let city = searchTextField.text {
+            weatherManager.fetchWeather(cityName: city)
+        }
+        
         // Use searchTextField.text to get the weather for that city.
         searchTextField.text = ""
         searchTextField.placeholder = "Search"
     }
 }
+
+//0dd5e6367a222aa43d7af32882000f71
+
+//api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
