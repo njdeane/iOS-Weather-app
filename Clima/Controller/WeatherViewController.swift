@@ -52,15 +52,15 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
         
         // Use searchTextField.text to get the weather for that city.
         searchTextField.text = ""
-        searchTextField.placeholder = "Search"
     }
     
-    func didUpdateWeather(weather: WeatherModel) {
-        <#code#>
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        print(weather.temperature)
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
     }
 }
 
-//0dd5e6367a222aa43d7af32882000f71
-
-//api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
