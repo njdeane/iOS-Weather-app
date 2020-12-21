@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController, UITextFieldDelegate {
+class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManagerDelegate {
     
     var weatherManager = WeatherManager()
 
@@ -20,7 +20,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // this line specifies that the text field should report to the view controller. (self refers to the current view controller).
+        weatherManager.delegate = self
         searchTextField.delegate = self
     }
 
@@ -53,6 +53,10 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
         // Use searchTextField.text to get the weather for that city.
         searchTextField.text = ""
         searchTextField.placeholder = "Search"
+    }
+    
+    func didUpdateWeather(weather: WeatherModel) {
+        <#code#>
     }
 }
 
